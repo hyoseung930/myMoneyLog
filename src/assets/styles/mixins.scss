@@ -1,0 +1,36 @@
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+@mixin card {
+  background: $color-card;
+  border-radius: $border-radius;
+  padding: $spacing-md;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+@mixin button-base {
+  padding: $spacing-md $spacing-xl;
+  border: none;
+  border-radius: $border-radius;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all $transition-speed;
+  
+  &:hover {
+    opacity: 0.9;
+  }
+  
+  &:active {
+    transform: translateY(1px);
+  }
+}
