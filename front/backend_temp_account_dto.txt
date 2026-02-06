@@ -1,0 +1,37 @@
+import { IsString, IsNotEmpty, IsOptional, IsNumber } from 'class-validator';
+
+export class CreateAccountDto {
+  @IsString()
+  @IsNotEmpty()
+  bankName: string;
+
+  @IsString()
+  @IsNotEmpty()
+  accountNumber: string;
+
+  @IsString()
+  @IsNotEmpty()
+  accountType: string;
+
+  @IsNumber()
+  @IsOptional()
+  balance?: number;
+}
+
+export class UpdateAccountDto {
+  @IsString()
+  @IsOptional()
+  bankName?: string;
+
+  @IsString()
+  @IsOptional()
+  accountNumber?: string;
+
+  @IsString()
+  @IsOptional()
+  accountType?: string;
+
+  @IsNumber()
+  @IsOptional()
+  balance?: number;
+}

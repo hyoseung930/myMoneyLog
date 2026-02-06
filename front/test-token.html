@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head><title>Token Test</title></head>
+<body>
+<button onclick="testLogin()">Test Login</button>
+<pre id="output"></pre>
+<script>
+async function testLogin() {
+  const output = document.getElementById('output');
+  try {
+    const response = await fetch('http://localhost:3000/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username: 'eaim93k', password: '1234' }),
+      credentials: 'include'
+    });
+    const data = await response.json();
+    output.textContent = JSON.stringify(data, null, 2);
+    
+    // Test token storage
+    localStorage.setItem('test_token', data.accessToken);
+    const retrieved = localStorage.getItem('test_token');
+    output.textContent += '\n\nStored: ' + retrieved;
+    output.textContent += '\nFirst char: ' + retrieved.charCodeAt(0);
+  } catch (err) {
+    output.textContent = 'Error: ' + err.message;
+  }
+}
+</script>
+</body>
+</html>
